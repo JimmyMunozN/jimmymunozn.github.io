@@ -1,5 +1,7 @@
+import { pulseAnimation } from "./animation.js";
+import { projectCarousel } from "./projects.js";
+
 const vwToPx = (vw) => (vw * window.innerWidth) / 100;
-const vhToPx = (vh) => (vh * window.innerHeight) / 100;
 
 const SECTION_NAMES = ['center', 'home', 'about', 'projects', 'contact'];
 const TRANSITION_TIME = 500;
@@ -40,6 +42,33 @@ async function scrollToTarget(target) {
     await new Promise(resolve => setTimeout(resolve, TRANSITION_TIME + 50));
 }
 
+
+async function loadContent(pageName) {
+    const contentDiv = document.getElementById('content');
+    const url = `/get-content/${pageName}`;
+
+    try {
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error(`Error al cargar la página: ${response.status}`);
+        }
+
+        const htmlContent = await response.text();
+
+        await (contentDiv.innerHTML = htmlContent);
+
+        if (pageName === 'projects') {
+             projectCarousel();
+        }
+
+    } catch (error) {
+        console.error("Fallo al cargar el contenido:", error);
+        contentDiv.innerHTML = `<p>Lo sentimos, no pudimos cargar la sección de ${pageName}.</p>`;
+    }
+}
+
+
 async function handleVerticalScroll(event) {
     event.preventDefault(); 
 
@@ -58,6 +87,10 @@ async function handleVerticalScroll(event) {
 
         actualTarget = newIndex;
 
+        pulseAnimation(target);
+
+        await loadContent(target); 
+        
         await scrollToTarget(target);
 
         isScrolling = false; 
@@ -66,14 +99,15 @@ async function handleVerticalScroll(event) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
 
+document.addEventListener('DOMContentLoaded', () => {
+    pulseAnimation('center');
     window.addEventListener('wheel', handleVerticalScroll, { passive: false });
     setTimeout(() => {
         scrollToTarget('center');
         actualTarget = SECTION_NAMES.indexOf('center');
     }, 200); 
-
+    
     document.querySelectorAll('#navbar a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault(); 
@@ -85,15 +119,25 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (text.includes('about')) target = 'about';
             else if (text.includes('portfolio')) target = 'projects';
             else if (text.includes('contact')) target = 'contact';
+
+            const pageName = e.target.getAttribute('data-page'); 
+            
+            if (pageName) {
+                loadContent(pageName);
+            }
             
             if (target) {
                 scrollToTarget(target);
+                pulseAnimation(target);
             }
         });
     });
 
     document.querySelector('#navbar button').addEventListener('click', (e) => {
         e.preventDefault();
-        scrollToTarget('center')
-    })
+        scrollToTarget('center');
+        pulseAnimation('center');
+    });
 });
+
+

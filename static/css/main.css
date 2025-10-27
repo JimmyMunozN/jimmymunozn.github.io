@@ -6,7 +6,6 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow: hidden;
     background-color: #0C0404;
     color: white; 
 }
@@ -26,16 +25,17 @@ html, body {
     display: block;
 }
 
-#contentWrapper {
+#content {
     position: relative;
     z-index: 20;
 }
 
 nav {
-    z-index: 100;
+    z-index: 1000;
     padding: 2.5% 2.5%;
     width: 100%;
     position: fixed;
+    top: 0;
     display: flex;
     justify-content: space-between;
 }
