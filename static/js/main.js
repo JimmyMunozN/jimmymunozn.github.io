@@ -1,9 +1,9 @@
 import { pulseAnimation } from "./animation.js";
-import { projectCarousel } from "./projects.js";
+import { portfolioStart } from "./projects.js";
 
 const vwToPx = (vw) => (vw * window.innerWidth) / 100;
 
-const SECTION_NAMES = ['center', 'home', 'about', 'projects', 'contact'];
+const SECTION_NAMES = ['start', 'home', 'about', 'projects', 'contact'];
 const TRANSITION_TIME = 500;
 const BG_WIDTH_VW = 205;
 const BG_HEIGHT_VW = 130;
@@ -16,7 +16,7 @@ function animationScroll(target) {
         'about':     { x: 0, y: BG_HEIGHT_VW / 2 },
         'projects':  { x: BG_WIDTH_VW, y: BG_HEIGHT_VW / 2 },
         'contact':   { x: BG_WIDTH_VW / 2, y: BG_HEIGHT_VW },
-        'center':    { x: BG_WIDTH_VW / 2, y: BG_HEIGHT_VW / 2 } 
+        'start':    { x: BG_WIDTH_VW / 2, y: BG_HEIGHT_VW / 2 } 
     };
 
     const targetVW = targets[target];
@@ -33,8 +33,8 @@ function animationScroll(target) {
 }
 
 async function scrollToTarget(target) {
-    if (actualTarget != 'center') {
-        animationScroll('center');
+    if (actualTarget != 'start') {
+        animationScroll('start');
         await new Promise(resolve => setTimeout(resolve, TRANSITION_TIME + 50));
     }
     animationScroll(target);
@@ -59,7 +59,7 @@ async function loadContent(pageName) {
         await (contentDiv.innerHTML = htmlContent);
 
         if (pageName === 'projects') {
-             projectCarousel();
+            portfolioStart();
         }
 
     } catch (error) {
@@ -101,11 +101,11 @@ async function handleVerticalScroll(event) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    pulseAnimation('center');
+    pulseAnimation('start');
     window.addEventListener('wheel', handleVerticalScroll, { passive: false });
     setTimeout(() => {
-        scrollToTarget('center');
-        actualTarget = SECTION_NAMES.indexOf('center');
+        scrollToTarget('start');
+        actualTarget = SECTION_NAMES.indexOf('start');
     }, 200); 
     
     document.querySelectorAll('#navbar a').forEach(link => {
@@ -135,8 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#navbar button').addEventListener('click', (e) => {
         e.preventDefault();
-        scrollToTarget('center');
-        pulseAnimation('center');
+        loadContent('start');
+        scrollToTarget('start');
+        pulseAnimation('start');
     });
 });
 

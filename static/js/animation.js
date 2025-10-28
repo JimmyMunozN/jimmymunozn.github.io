@@ -7,7 +7,7 @@ const PATH_SELECTORS = {
     'about':     '#path_flow_left',
     'projects':  '#path_flow_right',
     'contact':   '#path_flow_bottom',
-    'center':    ['#path_flow_left', '#path_flow_right', '#path_flow_bottom', '#path_flow_top']
+    'start':    ['#path_flow_left', '#path_flow_right', '#path_flow_bottom', '#path_flow_top']
 };
 
 const ALL_PATHS = Object.values(PATH_SELECTORS);
@@ -40,9 +40,9 @@ export async function pulseAnimation(target) {
     
     await new Promise(resolve => setTimeout(resolve, 400));
 
-    if (target === 'center') {
+    if (target === 'start') {
         
-        const centerTargets = PATH_SELECTORS['center']
+        const centerTargets = PATH_SELECTORS['start']
 
         const baseDuration = 3000;
 

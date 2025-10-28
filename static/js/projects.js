@@ -1,6 +1,42 @@
-const RADIUS_COMPENSATION = 0;
+export async function portfolioStart() {
+    const portfolio = document.querySelector('.portfolio');
+    const techStackSection = document.querySelector('.techStack');
+    portfolioContent(portfolio, techStackSection);
+    projectCarousel();
+    showSection(portfolio, techStackSection, '5% 20%', 0, '140vw', '120vw');
+}
 
-export function projectCarousel () {
+function showSection(sectionToShow, sectionToHide, showMargin, hideMargin, showLeft, hideLeft) {
+    sectionToHide.style.opacity = 0;
+    sectionToHide.style.margin = hideMargin;
+    sectionToHide.style.left = hideLeft;
+    sectionToHide.style.transform = 'scale(0)';
+    sectionToHide.style.pointerEvents = 'none';
+
+    setTimeout(() => {
+        sectionToShow.style.opacity = '1';
+        sectionToShow.style.transform = 'scale(1)';
+        sectionToShow.style.margin = showMargin;
+        sectionToShow.style.left = showLeft;
+        sectionToShow.style.pointerEvents = 'auto';
+    }, 200);
+}
+
+function portfolioContent(portfolio, techStackSection) {
+    
+    const projectButton = document.querySelector('.projectsButton');
+    const techStackButton = document.querySelector('.techStackButton');
+
+    projectButton.addEventListener('click', () => {
+        showSection(portfolio, techStackSection, '5% 20%', 0, '140vw', '120vw');
+    });
+
+    techStackButton.addEventListener('click', () => {
+        showSection(techStackSection, portfolio, '2.5% 10%', 0, '140vw', '130vw');
+    });
+}
+
+function projectCarousel () {
     let amount = 6;
     var carousel = $(".carousel"),
         currdeg  = 0;
