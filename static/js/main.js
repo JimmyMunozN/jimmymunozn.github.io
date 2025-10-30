@@ -1,4 +1,5 @@
 import { pulseAnimation } from "./animation.js";
+import { homeStart } from "./home.js";
 import { portfolioStart } from "./projects.js";
 
 const vwToPx = (vw) => (vw * window.innerWidth) / 100;
@@ -56,10 +57,14 @@ async function loadContent(pageName) {
 
         const htmlContent = await response.text();
 
-        await (contentDiv.innerHTML = htmlContent);
+        contentDiv.innerHTML = htmlContent;
+
+        await new Promise(resolve => setTimeout(resolve, TRANSITION_TIME));
 
         if (pageName === 'projects') {
             portfolioStart();
+        } else if (pageName === 'home') {
+            homeStart();
         }
 
     } catch (error) {

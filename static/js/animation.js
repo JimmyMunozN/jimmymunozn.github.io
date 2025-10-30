@@ -1,6 +1,67 @@
-import { animate, svg, stagger } from 'https://esm.sh/animejs';
+import { animate, svg } from 'https://esm.sh/animejs';
 
 let currentAnimation = null;
+let prevTarget = null;
+let container = null;
+let content = null;
+let prevYvalue = 0;
+
+const entryProps = (x, y) => ({
+    opacity: [0, 1],
+    translateX: [x, 0],
+    translateY: [y, 0],
+    scale: [0, 1],
+    duration: 700
+});
+
+const exitProps = (x, y) => ({
+    opacity: [1, 0],
+    translateX: [0, x],
+    translateY: [0, y],
+    scale: [1, 0],
+    duration: 700
+});
+
+async function animateExit(targetElement, xvalue, yvalue) {
+    if (targetElement) {
+        await animate(targetElement, exitProps(xvalue, yvalue)).finished;
+    }
+}
+
+export async function componentAnimation(target, xvalue, yvalue) {
+    const componentClass = {
+        'home': '.homeInfo',
+        'about': '.about',
+        'projects': '.portfolioButtons',
+        'contact': '.contact'
+    };
+
+    const selector = componentClass[target] ?? target;
+    const isTargetContainer = componentClass.hasOwnProperty(target);
+    
+    if (target !== prevTarget) {
+
+        if (content !== null) {
+            await animateExit(content, xvalue, prevYvalue);
+        }
+
+        if (isTargetContainer && container !== null) {
+            await animateExit(content, xvalue, prevYvalue);
+            await animateExit(container, xvalue, yvalue);
+        }
+
+        const newAnimation = animate(selector, entryProps(xvalue, yvalue));
+        prevYvalue = yvalue;
+
+        if (isTargetContainer) {
+            container = selector;
+        } else {
+            content = selector;
+        }
+    }
+
+    prevTarget = target;
+}
 
 const PATH_SELECTORS = {
     'home':      '#path_flow_top',

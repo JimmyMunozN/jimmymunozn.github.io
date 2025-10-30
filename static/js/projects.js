@@ -1,38 +1,24 @@
-export async function portfolioStart() {
-    const portfolio = document.querySelector('.portfolio');
-    const techStackSection = document.querySelector('.techStack');
-    portfolioContent(portfolio, techStackSection);
+import { componentAnimation } from "./animation.js";
+
+export async function portfolioStart() {    
+    componentAnimation('projects', '20rem', '0');
+    await new Promise(resolve => setTimeout(resolve, 520));
+    portfolioContent();
+    componentAnimation('.portfolio', '-32vw', '-5rem');
     projectCarousel();
-    showSection(portfolio, techStackSection, '5% 20%', 0, '140vw', '120vw');
 }
 
-function showSection(sectionToShow, sectionToHide, showMargin, hideMargin, showLeft, hideLeft) {
-    sectionToHide.style.opacity = 0;
-    sectionToHide.style.margin = hideMargin;
-    sectionToHide.style.left = hideLeft;
-    sectionToHide.style.transform = 'scale(0)';
-    sectionToHide.style.pointerEvents = 'none';
-
-    setTimeout(() => {
-        sectionToShow.style.opacity = '1';
-        sectionToShow.style.transform = 'scale(1)';
-        sectionToShow.style.margin = showMargin;
-        sectionToShow.style.left = showLeft;
-        sectionToShow.style.pointerEvents = 'auto';
-    }, 200);
-}
-
-function portfolioContent(portfolio, techStackSection) {
+function portfolioContent() {
     
     const projectButton = document.querySelector('.projectsButton');
     const techStackButton = document.querySelector('.techStackButton');
 
     projectButton.addEventListener('click', () => {
-        showSection(portfolio, techStackSection, '5% 20%', 0, '140vw', '120vw');
+        componentAnimation('.portfolio', '-30vw', '-5rem');
     });
 
     techStackButton.addEventListener('click', () => {
-        showSection(techStackSection, portfolio, '2.5% 10%', 0, '140vw', '130vw');
+        componentAnimation('.techStack', '-30vw', '-2rem');
     });
 }
 
