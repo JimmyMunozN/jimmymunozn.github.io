@@ -110,7 +110,7 @@ export async function pulseAnimation(target) {
         const baseDuration = 2000;
 
         currentAnimation = animate(svg.createDrawable(centerTargets), {
-            draw: ['-0.1 -0.1', '-0.05 -0.01', '1 1'], 
+            draw: ['-0.1 -0.1', '-0.02 0.005', '1 1'], 
             ease: 'linear',
             duration: baseDuration,
             loop: true,

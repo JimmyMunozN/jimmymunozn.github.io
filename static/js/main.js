@@ -47,12 +47,29 @@ async function scrollToTarget(target) {
     await new Promise(resolve => setTimeout(resolve, TRANSITION_TIME + 50));
 }
 
+// main.js - Modificación clave
+
 async function handlePageTransition(targetPageName) {
-    if (previousTarget != targetPageName) {
-        scrollToTarget(targetPageName);
-        await loadContent(targetPageName);
+    if (isScrolling) {
+        console.warn("Transición bloqueada: Otra animación está en curso.");
+        return;
     }
-    previousTarget = targetPageName;
+
+    if (previousTarget !== targetPageName) {
+        isScrolling = true;
+        
+        try {
+            scrollToTarget(targetPageName);
+            await loadContent(targetPageName);
+            
+            previousTarget = targetPageName;
+            
+        } catch (error) {
+            console.error("Error durante la transición de página:", error);
+        } finally {
+            isScrolling = false;
+        }
+    }
 }
 
 async function loadContent(pageName) {
@@ -107,7 +124,6 @@ async function loadContent(pageName) {
     }
 }
 
-
 async function handleVerticalScroll(event) {
     event.preventDefault(); 
 
@@ -115,8 +131,6 @@ async function handleVerticalScroll(event) {
         return;
     }
     
-    isScrolling = true; 
-
     animationObject = null;
     
     const direction = event.deltaY > 0 ? 1 : -1;
@@ -126,13 +140,8 @@ async function handleVerticalScroll(event) {
         
         const target = SECTION_NAMES[newIndex];
 
-        actualTarget = newIndex;
-
         await handlePageTransition(target);
-
-        isScrolling = false; 
-    } else {
-        isScrolling = false; 
+        actualTarget = SECTION_NAMES.indexOf(target);
     }
 }
 

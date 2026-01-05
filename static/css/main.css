@@ -6,9 +6,14 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: #0C0404;
-    color: white; 
+    background-color: #11161F;
+    color: white;
+    scrollbar-width: none;
     font-family: 'Poppins', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 #backgroundContainer {
