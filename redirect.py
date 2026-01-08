@@ -11,7 +11,7 @@ else:
 app = Flask(__name__)
 
 
-try:
+'''try:
     app.config['SECRET_KEY'] = os.environ.get('MY_SECRET_KEY', 'default_fallback_key')
     app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
     app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
@@ -29,7 +29,7 @@ app.config['MAIL_USE_SSL'] = True
 
 RECEIVING_EMAIL = 'jimmymunozn@gmail.com' 
 
-mail = Mail(app)
+mail = Mail(app)'''
 
 
 @app.route('/')
@@ -59,7 +59,7 @@ def downloadCV():
     )
 
 
-@app.route('/contacto', methods=['POST'])
+'''@app.route('/contacto', methods=['POST'])
 def handle_contact_form():
 
     name = request.form.get('name')
@@ -90,8 +90,8 @@ def handle_contact_form():
         except Exception as e:
             print(f"Error al enviar correo: {e}")
             flash('Error al enviar tu mensaje. Verifica la configuración del servidor.', 'error')
-
-    return render_template('contact.html')
+            
+    return render_template('contact.html')'''
 
 if __name__ == '__main__':
     app.run(debug=True)
