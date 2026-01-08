@@ -47,6 +47,7 @@ function copyContent() {
 function setupContactForm() {
     const form = document.getElementById('contactForm');
     const buttonContent = document.getElementById('buttonContent');
+    const flashContainer = document.querySelector('.flashContainer');
 
     if (!form) {
         return;
@@ -74,23 +75,11 @@ function setupContactForm() {
             if (response.ok) {
                 form.reset();
 
-                let flashContainer = document.querySelector('.flash-container');
-                if (!flashContainer) {
-                    flashContainer = document.createElement('div');
-                    flashContainer.className = 'flash-container';
-                    form.prepend(flashContainer);
-                }
-
                 const flashMsg = document.createElement('div');
                 flashMsg.className = 'flash-message flash-success';
                 flashMsg.textContent = '¡Gracias! Tu mensaje ha sido enviado correctamente. Te responderé pronto.';
 
                 flashContainer.appendChild(flashMsg);
-
-                const contactSection = document.getElementById('contactPage');
-                const contactMethods = document.getElementById('contactContent');
-                if(contactSection) contactSection.style.transform = 'scale(1)';
-                if(contactMethods) contactMethods.style.transform = 'scale(1)';
 
                 setTimeout(() => {
                     flashMsg.classList.add('hidden');

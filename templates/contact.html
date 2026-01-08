@@ -5,13 +5,7 @@
             <h2>Send an email</h2>
 
             <div class="flashContainer">
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                        {% for category, message in messages %}
-                            <div class="flash-message flash-{{ category }}">{{ message }}</div>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
+
             </div>
 
             <form id='contactForm' method="POST" action="https://formspree.io/f/xnjneyee">
