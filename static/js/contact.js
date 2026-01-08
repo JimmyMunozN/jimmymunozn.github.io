@@ -92,7 +92,7 @@ function setupContactForm() {
 
         } catch (error) {
             console.error("Fallo al enviar el formulario:", error);
-            alert("Error de conexión. Por favor, revisa la consola para más detalles.");
+            alert("Error de conexión. Por favor, intenta más tarde.");
             
         } finally {
             buttonContent.textContent = originalText;
