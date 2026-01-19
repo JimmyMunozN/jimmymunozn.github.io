@@ -1,0 +1,465 @@
+.portfolioSection {
+    margin-top: 93vh;
+    margin-left: 115vw;
+}
+
+.portfolioButtons {
+    background-color: #13222bcc;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%); background-size: 100% 4px;
+    border-radius: 12px;
+    border: solid 2px #078a9bcc;
+    box-shadow: 0 0 30px rgb(117, 216, 255);
+    transform: scale(0);
+    padding: 2em;
+    margin-top: 8%;
+    margin-left: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.portfolioButtons button {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background: rgb(2,29,78);
+    background: linear-gradient(270deg, rgba(21, 142, 153, 0.873) 0%, rgba(31, 215, 232, 0.873) 60%);
+    cursor: pointer;
+    border-radius: 20em;
+    border: none;
+    padding: 0 1em;
+    height: 4vh;
+    width: 7vw;
+    margin: 10% 0;
+    transition: transform 2s, background 1s, color 0.5s, box-shadow 0.5s, justify-content 1s;
+}
+
+.portfolioButtons a {
+    text-decoration: none;
+}
+
+.portfolioButtons i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: 1vw;
+    border-radius: 100%;
+    background:rgba(31, 215, 232, 0.873);
+    padding: 0.5em;
+    left: 1.7em;
+    width: 4vmin;
+    height: 4vmin;
+    transition: all 0.5s;
+}
+
+.portfolioButtons button:hover {
+    color: rgba(97, 255, 255, 0.788);
+    box-shadow: 0 0 10px rgb(117, 216, 255);
+    background: #252525;
+    justify-content: start;
+}
+
+.portfolioButtons button:hover i {
+    color: #f3f3f3;
+    background:rgb(0, 183, 255);
+    transform: translateX(5vw);
+}
+
+.portfolioButtons .portfolioButtonActive { 
+    color: rgba(97, 255, 255, 0.788);
+    box-shadow: 0 0 10px rgb(117, 216, 255);
+    background: #252525;
+    justify-content: start;
+}
+
+.portfolioButtons .portfolioButtonActive i { 
+    color: #f3f3f3;
+    background:rgb(0, 183, 255);
+    transform: translateX(5vw);
+}
+
+.portfolio {
+    transform: scale(0);
+    margin: 5% 15%;
+    left: 135vw;
+    width: 20vw;
+    height: 45vh;
+    position: absolute;
+    perspective: 1000px;
+}
+
+.carousel {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.projectMedia {
+    width: 18vw;
+    height: auto;
+    max-height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    transition: max-height 0.5s ease-in-out;
+}
+
+:root {
+    --size: 125px;
+    --half-size: 62.5px;
+    --perspective: 800px;
+}
+
+.scene {
+    width: var(--size);
+    height: var(--size);
+    margin: 50px auto;
+    perspective: var(--perspective); 
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg); 
+    transition: transform 1s ease-in-out; 
+}
+
+.face {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: rgb(75, 221, 197);
+    color: white;
+}
+
+.front {
+    transform: translateZ(var(--half-size));
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(var(--half-size));
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(var(--half-size));
+}
+
+.projectMedia img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: #0d1b24ee;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.7) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.7) 50%, transparent 50%); background-size: 100% 4px;
+    width: 20vw;
+    height: 45vh; 
+    padding: 0 10%;
+    padding-top: 10%;
+    color: #FFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s, justify-content 0.7s ease-out;
+}
+
+.a {
+    transform: rotateY(0deg) translateZ(20vw);
+}
+.b {
+    transform: rotateY(calc(1*(360deg / 6))) translateZ(20vw);
+}
+.c {
+    transform: rotateY(calc(2*(360deg / 6))) translateZ(20vw);
+}
+.d {
+    transform: rotateY(calc(3*(360deg / 6))) translateZ(20vw);
+}
+.e {
+    transform: rotateY(calc(4*(360deg / 6))) translateZ(20vw);
+} 
+
+.f {
+    transform: rotateY(calc(5*(360deg / 6))) translateZ(20vw);
+}
+
+.projectTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 
+        1px 1px 0 #003135, 
+        -1px -1px 0 #003135,
+        
+        0 0 5px rgba(0, 116, 124, 0.7),
+        0 0 10px rgba(0, 116, 124, 0.7);
+    padding: 0;
+    transition: transform 0.7s;
+}
+
+.projectTitle a {
+    text-decoration: none;
+}
+
+.projectTitle i {
+    color: rgba(97, 255, 255, 0.788);
+}
+
+.projectTitle h2 {
+    margin: 0 10px;
+    padding: 0;
+}
+
+.description {
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+    overflow: hidden;
+    transform: scaleY(0);
+    transition: opacity 1.3s, max-height 2s, transform 1s;
+}
+
+.description p {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: clamp(8px, 5vw, 12px);
+    text-align: justify;
+}
+
+.tags {
+    display: flex;
+    align-items:flex-start;
+    list-style-type: none;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.tag {
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #041e22b6;
+    background-color: rgb(66, 66, 66);
+    border: 3px solid #24242473;
+    font-size: clamp(6px, 5vw, 10px);
+    display: inline-block;
+}
+
+.project.is-front {
+    box-shadow: 0 0 30px rgb(117, 216, 255);
+}
+
+.project.is-front .description {
+    opacity: 1;
+    max-height: 20vh;
+    transform: scaleY(1);
+}
+
+.project.is-front .projectMedia {
+    max-height: 18vh;
+}
+
+.project.is-front .cube.is-3d {
+    transform: rotateX(-30deg) rotateY(45deg);
+}
+
+.next, .prev {
+    position: absolute;
+    top: 30%;
+    padding: 0;
+    cursor: pointer;
+}
+
+.next polyline, .prev polyline {
+    font-size: 60px;
+    stroke: #afafaf;
+    transition: stroke 0.3s;
+    filter: drop-shadow(0 0 10px rgb(0, 183, 255));
+}
+
+.next:hover polyline, .prev:hover polyline{
+    stroke: #e9e9e9;
+}
+
+.next { left: 30em; }
+.prev { right: 30em; }
+
+.techStack {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    left: 135vw;
+    margin: 2.5% 5%;
+    transform: scale(0);
+    background-color: #13222bcc;
+    background-image: linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%), linear-gradient(rgba(10, 25, 30, 0.5) 50%, transparent 50%); background-size: 100% 4px;
+    width: 40vw;
+    height: 60vh; 
+    padding: 2%;
+    color: #FFF;
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    box-shadow: 0 0 30px rgb(117, 216, 255);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.techStack header {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.techStack header h2 {
+    text-shadow: 
+        1px 1px 0 #000000, 
+        -1px -1px 0 #000000,
+        
+        0 0 5px rgba(0, 230, 246, 0.7),
+        0 0 10px rgba(0, 230, 246, 0.5);
+    text-align: center;
+    font-weight: 700;
+    font-size: clamp(40px, 5vw, 50px);
+    margin: 0;
+}
+
+.techStack main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.tech {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background-color: rgb(66, 66, 66);
+    border: 3px solid #42b5c473;
+    border-radius: 12px;
+    width: 5vw;
+    height: 5vw;
+    margin: 1em;
+    padding: auto;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 4px 4px 1px #000000;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tech:hover {
+    background-color: #575757;
+    border-color: #030505;
+    transform: translate(-6px, -6px) rotate(1deg);
+    box-shadow: 10px 10px 0 #000000, 15px 15px 20px rgba(64, 164, 122, 0.2);
+}
+
+.tech::before,
+.tech::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 183, 255, 0.151),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+.tech::before {
+    left: -100%;
+}
+.tech::after {
+    left: 100%;
+}
+
+.tech:hover::before {
+    animation: swipeRight 1.5s infinite;
+}
+.tech:hover::after {
+    animation: swipeLeft 1.5s infinite;
+}
+
+@keyframes swipeRight {
+    100% {
+        transform: translateX(200%) skew(-45deg);
+    }
+}
+
+@keyframes swipeLeft {
+    100% {
+        transform: translateX(-200%) skew(-45deg);
+    }
+}
+
+.tech:hover svg {
+    margin-top: 0.5vw;
+    width: 2vw;
+    height: 2vw;
+    transform: translateY(-0.2vw);
+}
+
+.tech:hover h4 {
+    opacity: 1;
+    transform: scale(1);
+    max-height: 3vw;
+    position: relative;
+}
+
+
+.tech svg {
+    width: 80%;
+    height: 80%;
+    display: block;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tech h4 {
+    font-size: clamp(10px, 5vw, 13px);
+    white-space: nowrap;
+    position: absolute;
+    margin-top: 0;
+    width: 100%;
+    opacity: 0;
+    max-height: 0;
+    transform: scale(0);
+    overflow: hidden;
+    padding: 0.5em;
+    margin-bottom: 0.2em;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
