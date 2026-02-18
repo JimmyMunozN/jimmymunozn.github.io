@@ -5,7 +5,7 @@
         <p>Veo el código como la materialización de la creatividad y el pensamiento lógico; es la herramienta que uso para dar vida a soluciones funcionales. Me defino por mi metodología de trabajo proactiva y autónoma, con una gran capacidad para aprender rápidamente y adaptarme a nuevas tecnologías. Mi experiencia práctica incluye el desarrollo de proyectos de Realidad Aumentada utilizando Unity, modelado 3D, HoloLens y WebAR, donde participé en la investigación de nuevas tecnologías en el campo y la creación de soluciones innovadoras. Disfruto del desafío de plasmar la imaginación en código limpio y eficiente, y me integro fácilmente en equipos de trabajo gracias a mi experiencia con metodologías ágiles (Scrum), Git e inglés.</p>
         <ul class="pageLinks">
             <li><a class="techLink" href="#" data-page="projects" data-target-animation="techStack">TechStack<i class="fa fa-external-link" aria-hidden="true"></i></a></li>
-            <li><a href="/downloadCV">Download CV<i class="fa fa-download" aria-hidden="true"></i></a></li>
+            <li><a href="../downloadCV">Download CV<i class="fa fa-download" aria-hidden="true"></i></a></li>
             <li><a href="#" data-page="contact">Contact<i class="fa fa-external-link" aria-hidden="true"></i></a></li>
         </ul>
         <ul class="socialLinks">
@@ -58,6 +58,6 @@
             </defs>
         </svg>
         
-        <img id='profileFoto' src='/static/img/perfil.jpg' alt="">
+        <img id='profileFoto' src='../static/img/perfil.jpg' alt="">
     </div>
 </div>

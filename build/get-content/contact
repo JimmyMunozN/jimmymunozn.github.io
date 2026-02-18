@@ -77,7 +77,7 @@
                 </p>
 
                 <ul class="pageLinks">
-                    <li><a href="/downloadCV">Download CV<i class="fa fa-download" aria-hidden="true"></i></a></li>
+                    <li><a href="../downloadCV">Download CV<i class="fa fa-download" aria-hidden="true"></i></a></li>
                 </ul>
 
                 <ul class="socialLinks">
