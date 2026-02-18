@@ -1,6 +1,8 @@
 from flask import Flask, render_template, send_from_directory
+from flask_frozen import Freezer
 import os
 from dotenv import load_dotenv
+import sys
 
 if os.path.exists('/etc/secrets/.env'):
     load_dotenv('/etc/secrets/.env')
@@ -38,7 +40,16 @@ def downloadCV():
         download_name=download_name
     )
 
-app = app
+freezer = Freezer(app)
+
+@freezer.register_generator
+def get_content_generator():
+    for page in ['start', 'home', 'about', 'projects', 'contact']:
+        yield 'get_content', {'page_name': page}
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if len(sys.argv) > 1 and sys.argv[1] == 'freeze':
+        freezer.freeze()
+        print("¡Congelado completado! Revisa la carpeta 'build/'.")
+    else:
+        app.run(debug=True)
