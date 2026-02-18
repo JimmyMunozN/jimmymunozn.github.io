@@ -39,7 +39,7 @@
                     </main>
                 </div>
                 <figure class='projectMedia'>
-                    <img src='/static/img/logistic.png' alt="">
+                    <img src='../static/img/logistic.png' alt="">
                 </figure>
             </div>
             <div class="project b">
@@ -84,7 +84,7 @@
                     </main>
                 </div>
                 <figure class='projectMedia'>
-                    <img src='/static/img/card.png' alt="">
+                    <img src='../static/img/card.png' alt="">
                 </figure>
             </div>
             <div class="project d">
@@ -104,7 +104,7 @@
                     </main>
                 </div>
                 <figure class='projectMedia'>
-                    <img src='/static/img/puzzle.png' alt="">
+                    <img src='../static/img/puzzle.png' alt="">
                 </figure>
             </div>
             <div class="project e">
@@ -124,7 +124,7 @@
                     </main>
                 </div>
                 <figure class='projectMedia'>
-                    <img src='/static/img/router.png' alt="">
+                    <img src='../static/img/router.png' alt="">
                 </figure>
             </div>
             <div class="project f">
@@ -143,7 +143,7 @@
                     </main>
                 </div>
                 <figure class='projectMedia'>
-                    <img src='/static/img/coinkeeper.png' alt="">
+                    <img src='../static/img/coinkeeper.png' alt="">
                 </figure>
             </div>
         </div>
