@@ -29,7 +29,7 @@ def downloadCV():
 
     filename = 'JimmyMunoz_CV.pdf'
     
-    download_name = 'CV_JimmyMuñoz.pdf'
+    download_name = 'CV_JimmyMuñoz_JuniorDeveloper.pdf'
 
     return send_from_directory(
         directory,
